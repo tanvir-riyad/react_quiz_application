@@ -1,4 +1,4 @@
-import classes from "../styles/Layout.module.css";
+import classes from "../styles/layout.module.css";
 import Nav from "./nav";
 
 export default function Layout({ children }) {
