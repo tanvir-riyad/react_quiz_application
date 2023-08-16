@@ -14,9 +14,9 @@ const initialState = null;
 const reducer = (state, action) => {
   switch (action.type) {
     case "questions":
-      action.value.forEach((questions) => {
-        questions.options.forEach((options) => {
-          options.checked = false;
+      action.value.forEach((question) => {
+        question.options.forEach((option) => {
+          option.checked = false;
         });
       });
       return action.value;
@@ -39,10 +39,6 @@ export default function Quiz() {
   const [qna, dispatch] = useReducer(reducer, initialState);
   const { currentUser } = useAuth();
   const navigate = useNavigate();
-  // const history = useHistory();
-  // const { location } = history;
-  // const { state } = location;
-  // const { videoTitle } = state;
 
   useEffect(() => {
     dispatch({
@@ -76,9 +72,10 @@ export default function Quiz() {
 
   async function submit() {
     const { uid } = currentUser;
-    const resultref = ref(database, `result/${uid}`);
 
-    await set(resultref, {
+    const resultRef = ref(database, `result/${uid}`);
+
+    await set(resultRef, {
       [id]: qna,
     });
 
@@ -88,6 +85,7 @@ export default function Quiz() {
         qna,
       },
     });
+    console.log("qna", qna);
   }
 
   return (
@@ -109,7 +107,7 @@ export default function Quiz() {
             submit={submit}
             progress={percentage}
           />
-          <Miniplayer />
+          <Miniplayer id={id} title={qna[currentQuestion].title} />
         </>
       )}
     </>
