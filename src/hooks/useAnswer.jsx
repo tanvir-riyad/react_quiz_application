@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 export default function useAnswer(videoID) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [answwers, setAnswers] = useState([]);
+  const [answers, setAnswers] = useState([]);
 
   // const [hasMore, setHasMore] = useState(true);
 
@@ -38,6 +38,6 @@ export default function useAnswer(videoID) {
   return {
     loading,
     error,
-    answwers,
+    answers,
   };
 }

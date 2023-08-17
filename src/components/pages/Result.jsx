@@ -7,15 +7,12 @@ import _ from "lodash";
 export default function Result() {
   const { id } = useParams();
   const location = useLocation();
-  // console.log(location);
-  // const { qna } = location.state;
+  const qna = location.state;
   const { loading, error, answers } = useAnswer(id);
 
   function calculate() {
-    if (!answers || !qna) {
-      console.log("error"); // Return a default score if data is missing
-    }
     let score = 0;
+    console.log("answers", answers);
 
     answers.forEach((question, index1) => {
       let correctIndexes = [],

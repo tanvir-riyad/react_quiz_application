@@ -79,12 +79,12 @@ export default function Quiz() {
       [id]: qna,
     });
 
-    navigate({
-      pathname: `/result/${id}`,
-      state: {
-        qna,
-      },
-    });
+    // navigate({
+    //   pathname: `/result/${id}`,
+    //   {state: qna},
+    // });
+
+    navigate(`/result/${id}`, { state: qna });
     console.log("qna", qna);
   }
 
