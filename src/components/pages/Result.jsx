@@ -12,7 +12,6 @@ export default function Result() {
 
   function calculate() {
     let score = 0;
-    console.log("answers", answers);
 
     answers.forEach((question, index1) => {
       let correctIndexes = [],

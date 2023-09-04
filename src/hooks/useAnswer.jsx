@@ -7,8 +7,6 @@ export default function useAnswer(videoID) {
   const [error, setError] = useState(false);
   const [answers, setAnswers] = useState([]);
 
-  // const [hasMore, setHasMore] = useState(true);
-
   useEffect(() => {
     async function fetchAnswers() {
       const answerRef = ref(database, "answers/" + videoID + "/questions");
@@ -26,14 +24,14 @@ export default function useAnswer(videoID) {
           console.log("Fetched Questions:", questions);
         }
       } catch (error) {
-        console.error("Error fetching question:", error);
         setLoading(false);
         setError(true);
       }
     }
 
     fetchAnswers();
-  }, []);
+  }, [videoID]);
+  console.log(error);
 
   return {
     loading,
